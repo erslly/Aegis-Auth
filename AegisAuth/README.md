@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛡️ Next.js Kimlik Doğrulama API'si
 
-## Getting Started
+Bu proje, **Next.js API Routes**, **MongoDB**, **bcrypt** ve **JWT** kullanarak güvenli bir kullanıcı kimlik doğrulama sistemi sağlar. Kullanıcılar **kayıt olabilir, giriş yapabilir ve JWT token ile kimlik doğrulaması yapabilir**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Özellikler
+✅ Kullanıcı kaydı (**şifre & e-posta şifreleme** ile)  
+✅ Kullanıcı girişi (JWT token ile)  
+✅ Güçlü şifreleme (**bcrypt**)  
+✅ JWT ile kimlik doğrulama  
+✅ MongoDB ile kullanıcı verisi saklama  
+✅ Güçlü API endpointleri  
+✅ Hata yönetimi ve güvenli API kullanımı  
+
+---
+
+## 🛠️ Kurulum
+
+Öncelikle, projenizi yerel ortamınıza klonlayın:
+```sh
+$ git clone https://github.com/erslly/Aegis-Auth.git
+$ cd proje-adi
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Gerekli bağımlılıkları yükleyin:
+```sh
+$ npm install
+# veya
+$ yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**.env.local** dosyanızı oluşturun ve aşağıdaki bilgileri ekleyin:
+```env
+MONGODB_URI=mongodb+srv://kullanici:şifre@cluster.mongodb.net/veritabani
+JWT_SECRET=supergizlisifre
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Sunucuyu başlatın:
+```sh
+$ npm run dev
+```
+**🔹 Artık API'niz http://localhost:3000 üzerinde çalışıyor!**
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📌 Kullanım
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1️⃣ Kullanıcı Kaydı
+🔹 **Endpoint:** `POST /api/auth/register`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```json
+{
+  "username": "erslly",
+  "email": "dev@erslly.xyz",
+  "password": "123456"
+}
+```
+✅ **Başarıyla kayıt olduktan sonra:**
+```json
+{
+  "message": "Kullanıcı başarıyla kaydedildi",
+  "user": {
+    "username": "erslly",
+    "email": "dev@erslly.xyz"
+  }
+}
+```
 
-## Deploy on Vercel
+### 2️⃣ Kullanıcı Girişi
+🔹 **Endpoint:** `POST /api/auth/login`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```json
+{
+  "email": "dev@erslly.xyz",
+  "password": "123456"
+}
+```
+✅ **Başarıyla giriş yapıldıktan sonra:**
+```json
+{
+  "message": "Giriş başarılı",
+  "token": "JWT_TOKEN"
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 3️⃣ Kullanıcı Listesi (Admin Yetkisi Gerekir)
+🔹 **Endpoint:** `GET /api/auth/login`
+🔹 **Yanıt:**
+```json
+[
+  {
+    "username": "erslly",
+    "email": "dev@erslly.xyz"
+  }
+]
+```
+
+---
+
+## ⚡ Teknolojiler
+Bu projede aşağıdaki teknolojiler kullanılmıştır:
+- **Next.js** - API Routes
+- **MongoDB & Mongoose** - NoSQL veritabanı
+- **bcryptjs** - Şifre hashleme
+- **jsonwebtoken (JWT)** - Kimlik doğrulama
+- **TypeScript** - Güçlü tip desteği
+
+---
+
+## 🔒 Güvenlik Önlemleri
+✅ **Şifreler bcrypt ile hashlenir, düz metin olarak saklanmaz.**  
+✅ **JWT token’ler çevresel değişkende saklanır.**  
+✅ **E-posta şifreleme ve güçlü giriş doğrulaması mevcuttur.**  
+
+---
+
+## 🤝 Katkıda Bulunma
+Katkıda bulunmak isterseniz, lütfen bir **pull request (PR)** açmadan önce **issue** oluşturun.  
+
+1. **Fork** edin 📌
+2. **Yeni bir branch oluşturun** (`git checkout -b yeni-ozellik`)
+3. **Değişiklikleri yapın ve commit atın** (`git commit -m 'Yeni özellik eklendi'`)
+4. **Push edin** (`git push origin yeni-ozellik`)
+5. **PR açın!** 🎉
+
+---
+
+## 👨‍💻 Geliştirici
+[erslly](https://erslly.xyz)    
+
+---
+
+💙 **Desteğin için teşekkürler!** Eğer beğendiysen ⭐ **starlamayı** unutma!
+
