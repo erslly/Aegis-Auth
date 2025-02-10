@@ -101,7 +101,7 @@ $ npm run dev
 ## ⚡ Teknolojiler
 Bu projede aşağıdaki teknolojiler kullanılmıştır:
 - **Next.js** - API Routes
-- **MongoDB & Mongoose** - NoSQL veritabanı
+- **MongoDB & Mongoose**
 - **bcryptjs** - Şifre hashleme
 - **jsonwebtoken (JWT)** - Kimlik doğrulama
 - **TypeScript** - Güçlü tip desteği
