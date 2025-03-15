@@ -20,7 +20,7 @@ Bu proje, **Next.js API Routes**, **MongoDB**, **bcrypt** ve **JWT** kullanarak 
 Öncelikle, projenizi yerel ortamınıza klonlayın:
 ```sh
 $ git clone https://github.com/erslly/Aegis-Auth.git
-$ cd proje-adi
+$ cd aegis-auth
 ```
 
 Gerekli bağımlılıkları yükleyin:
